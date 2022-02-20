@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+import { Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -7,6 +7,8 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
+
+  @Input() time:any = 60
 
   constructor() { }
 

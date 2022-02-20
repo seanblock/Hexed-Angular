@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
 
-  @Input() colors = ['red', 'blue', 'green'];
+  @Input() colors = ['red', 'green', 'blue'];
   @Input() gameStatus = true
   title = 'hexed';
 

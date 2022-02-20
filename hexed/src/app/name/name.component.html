@@ -3,11 +3,8 @@
 <input type="number" id="seconds" min="1" max="100" placeholder="Enter Seconds" autocomplete="off"> 
 
 <button 
-    *ngIf="gameStatus; else elseStart"
+    *ngIf="gameStatus"
     id="start" 
     value="START" 
     (click)="onClick()"
 >START</button>
-<ng-template #elseStart>
-    <app-timer></app-timer>
-</ng-template>

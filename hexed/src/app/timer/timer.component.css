@@ -1,0 +1,8 @@
+h1 {
+    font-size: 3rem;
+    color: red;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}

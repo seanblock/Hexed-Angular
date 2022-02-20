@@ -1,16 +1,20 @@
 <router-outlet></router-outlet>
 <div id="grid-container">
-    <app-score></app-score>
+    
     <img id="drmario" src="../assets/drmario.png" alt="mario">
     <app-name 
         [gameStatus]="gameStatus" 
         (btnClick)="startGame()"
     ></app-name>
-    <div id="game" *ngIf="!gameStatus">
+    <div id="game" *ngIf="!gameStatus; else topTen">
+        <app-timer></app-timer>
         <app-color></app-color>
         <span *ngFor="let x of colors">
             <app-slider [color]="x" (newItemEvent)="colorGet($event)"></app-slider>
         </span>
         <img id="guess" src="../assets/block.png" alt="guess button" (click)="guess()">
     </div>
+    <ng-template #topTen>
+        <app-score></app-score>
+    </ng-template>
 </div>
