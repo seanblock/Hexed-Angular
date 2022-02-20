@@ -1,0 +1,12 @@
+#score-box {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 100%;
+    background-color: #ff3b3b4f;
+}
+
+h1 {
+    font-size: 3rem;
+    border-bottom: 3px solid black;
+    padding: 10px 0;
+}

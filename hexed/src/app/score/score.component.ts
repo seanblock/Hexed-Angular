@@ -4,7 +4,7 @@ import { Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-score',
   templateUrl: './score.component.html',
-  styleUrls: ['./score.component.css']
+  styleUrls: ['./score.component.css', '../app.component.css']
 })
 export class ScoreComponent implements OnInit {
 

@@ -1,0 +1,25 @@
+#colors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+}
+
+#colors > div:nth-child(1) {
+    border-radius: 100vw 0 0 100vw;
+    border-right: none !important;
+}
+
+#colors > div:nth-child(2) {
+    border-radius: 0  100vw 100vw 0;
+}
+
+.box {
+    height: 200px;
+    box-shadow: inset rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: solid 4px black;
+    margin: 0;
+    background-color: white;
+    flex-grow: 1;
+
+}

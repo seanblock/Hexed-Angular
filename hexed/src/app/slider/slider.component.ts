@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+import { Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
@@ -8,9 +8,22 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
 
+  @Input() color = '';
+
+
+  @Output() newItemEvent = new EventEmitter<object>();
+
+  colorValue(value: string, name: string) {
+    this.newItemEvent.emit({value, name});
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
+
+
 
 }

@@ -1,0 +1,57 @@
+app-score {
+    margin: 1rem;
+    text-align: center;
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
+}
+
+app-name {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: red;
+    margin: 4rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 1;
+}
+
+app-color {
+    width: 100%;
+    max-width: 500px;
+}
+
+#grid-container:nth-child(1) img {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 50%;
+}
+
+#game {
+    grid-row: 2 / 3;
+    grid-column: 2 / 4;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+}
+
+#guess {
+    width: 200px;
+    border-radius: 10px;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+#game img {
+    width: 100px;
+}

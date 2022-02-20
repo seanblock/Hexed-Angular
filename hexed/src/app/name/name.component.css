@@ -1,0 +1,27 @@
+button {
+    padding: .25rem 1rem;
+    border-radius: 100vw;
+    border: none;
+    background: linear-gradient(to right, rgb(255, 238, 0), #F3EE05);
+    font-size: clamp(1rem, 2.5vw, 2.5rem); 
+    color: black;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input {
+    font-size: clamp(1rem, 2.5vw, 2rem); 
+    width: 50%;
+    max-width: 300px;
+    min-width: 100px;
+    margin-bottom: 5px;
+    background-color: #ced8f7d0;
+    text-align: center;
+    border-radius: 100vw;
+}
+
+
+#logo {
+    width: 80% !important;
+    max-width: 500px;
+}

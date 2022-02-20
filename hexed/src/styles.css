@@ -12,3 +12,27 @@
   align-items: center;
   border: 1px solid black;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#grid-container {
+   display: grid;
+   grid-template-columns: repeat(4, 25vw);
+   grid-template-rows: 30vh 70vh;
+   overflow: hidden;
+   background-color: #ffffff;
+   background-image: url('./assets/background.png');
+}
+
+button {
+  cursor: pointer;
+}
