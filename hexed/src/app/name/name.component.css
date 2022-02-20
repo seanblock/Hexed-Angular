@@ -7,6 +7,11 @@ button {
     color: black;
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all ease .25s;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 input {

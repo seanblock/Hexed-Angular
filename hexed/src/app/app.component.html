@@ -2,13 +2,15 @@
 <div id="grid-container">
     <app-score></app-score>
     <img id="drmario" src="../assets/drmario.png" alt="mario">
-    <app-name></app-name>
-    <div id="game">
+    <app-name 
+        [gameStatus]="gameStatus" 
+        (btnClick)="startGame()"
+    ></app-name>
+    <div id="game" *ngIf="!gameStatus">
         <app-color></app-color>
         <span *ngFor="let x of colors">
-            <app-slider [color]="x" (newItemEvent)="color_get($event)"></app-slider>
+            <app-slider [color]="x" (newItemEvent)="colorGet($event)"></app-slider>
         </span>
-        <img id="guess" src="../assets/block.png" alt="guess button" onclick="guess()">
-        <app-timer></app-timer>
+        <img id="guess" src="../assets/block.png" alt="guess button" (click)="guess()">
     </div>
 </div>

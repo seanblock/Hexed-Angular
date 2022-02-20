@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -8,9 +8,23 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class NameComponent implements OnInit {
 
-  constructor() { }
+  @Output() btnClick = new EventEmitter()
+  @Input() gameStatus:any
+
+
+  fever = new Audio('../assets/fever.mp3');
+  
+  onClick() {
+    this.btnClick.emit()
+  }
+
+
+  constructor() { 
+ 
+  }
 
   ngOnInit(): void {
+
   }
 
 }

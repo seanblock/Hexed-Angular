@@ -1,4 +1,13 @@
 <img id="logo" src="../../assets/drmariologo.png" alt="">
 <input type="text" id="name" placeholder="Enter Initials" maxlength="3" required autocomplete="off">
 <input type="number" id="seconds" min="1" max="100" placeholder="Enter Seconds" autocomplete="off"> 
-<button id="start" value="START" onclick="start()">START</button>
+
+<button 
+    *ngIf="gameStatus; else elseStart"
+    id="start" 
+    value="START" 
+    (click)="onClick()"
+>START</button>
+<ng-template #elseStart>
+    <app-timer></app-timer>
+</ng-template>
