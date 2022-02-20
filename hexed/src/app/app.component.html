@@ -1,6 +1,7 @@
 <router-outlet></router-outlet>
 <div id="grid-container">
-    <img src="../assets/drmario.png" alt="">
+    <app-score></app-score>
+    <img id="drmario" src="../assets/drmario.png" alt="mario">
     <app-name></app-name>
     <div id="game">
         <app-color></app-color>
@@ -10,5 +11,4 @@
         <img id="guess" src="../assets/block.png" alt="guess button" onclick="guess()">
         <app-timer></app-timer>
     </div>
-    <app-score></app-score>
 </div>
