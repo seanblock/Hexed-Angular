@@ -9,14 +9,30 @@ import { Output, EventEmitter } from '@angular/core';
 export class NameComponent implements OnInit {
 
   @Output() btnClick = new EventEmitter()
+  @Output() timer = new EventEmitter()
+  @Output() initials = new EventEmitter()
   @Input() gameStatus:any
+  time:any
+  name:any
 
 
   fever = new Audio('../assets/fever.mp3');
   
   onClick() {
+    this.initials.emit(this.name)
+    this.timer.emit(this.time)
     this.btnClick.emit()
   }
+
+  onTimer(event: KeyboardEvent) { // with type info
+    this.time += (event.target as HTMLInputElement).value;
+  }
+
+  userName(event: KeyboardEvent) { // with type info
+    this.name += (event.target as HTMLInputElement).value;
+  }
+
+  
 
 
   constructor() { 
