@@ -6,18 +6,19 @@
     maxlength="3" 
     required 
     autocomplete="off"
+    (change)="userName(name.value)"
     #name
-    (keyup)="userName($event)"
 >
 <input 
     type="number" 
     id="seconds" 
     min="1" 
     max="100" 
+    max="100" 
     placeholder="Enter Seconds" 
     autocomplete="off"
+    (change)="onTimer(timer.value)"
     #timer
-    (keyup)="onTimer($event)"
 > 
 
 <button 

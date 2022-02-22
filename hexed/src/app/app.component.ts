@@ -9,11 +9,22 @@ export class AppComponent {
 
   @Input() colors = ['red', 'green', 'blue'];
   @Input() gameStatus = true
+  secondsToTimer: number = 0;
+  end = false;
+  randomColor: Array<number> = [];
+  myColor: Array<number> = [50, 50, 50];
+  myRgb = "";
+  timeLeft = 0;
   title = 'hexed';
 
   fever = new Audio('../assets/fever.mp3');
   win = new Audio('../assets/win.mp3');
   
+  sendToTimer(data: any) {
+    this.secondsToTimer = parseInt(data);
+    console.log(this.secondsToTimer)
+  }
+
   newGame() {
     this.win.currentTime = 0
     this.win.pause()
@@ -27,20 +38,29 @@ export class AppComponent {
   }
 
   guess() {
-    console.log("Game Started")
+    console.log("Game Ended")
     this.fever.currentTime = 0
     this.fever.pause()
     this.win.play()
-    this.gameStatus = true
+    //this.gameStatus = true
+    this.end = true;
   }
 
-  colorGet(data: object) {
-    var box = <HTMLInputElement>document.getElementById("my_box");
-    var red = <HTMLInputElement>document.getElementById("red");
-    var green = <HTMLInputElement>document.getElementById("green");
-    var blue = <HTMLInputElement>document.getElementById("blue");
-     
-    console.log(data)
-    box.style.backgroundColor = "rgb(" + red.value + "," + green.value + "," + blue.value + ")";
+  randColor(data: Array<number>) {
+    for(const x of data) {
+      this.randomColor.push(x);
+    }
+    console.log(this.randomColor);
+  }
+
+  colorGet(data: any) {
+    this.myColor[data.num] = parseInt(data.value);
+    this.myRgb = "rgb(" + this.myColor[0] + "," + this.myColor[1] + "," + this.myColor[2] + ")";
+  }
+
+  timeUpdate(data: number) {
+    if(!this.end) {
+      this.timeLeft = data;
+    }
   }
 }
