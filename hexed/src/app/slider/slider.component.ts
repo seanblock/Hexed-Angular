@@ -9,12 +9,12 @@ import { Output, EventEmitter, Input } from '@angular/core';
 export class SliderComponent implements OnInit {
 
   @Input() color = '';
-
+  @Input() num = 0;
 
   @Output() newItemEvent = new EventEmitter<object>();
 
-  colorValue(value: string, name: string) {
-    this.newItemEvent.emit({value, name});
+  colorValue(value: string, num: number) {
+    this.newItemEvent.emit({value, num});
   }
 
   constructor() { }

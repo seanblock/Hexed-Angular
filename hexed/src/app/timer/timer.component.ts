@@ -8,13 +8,21 @@ import { Output, EventEmitter, Input } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
-  @Input() time:any = 60
+  @Input() secondsToTimer: number = 0;
   @Output() newItemEvent = new EventEmitter<boolean>();
+  @Output() newTimeEvent = new EventEmitter<number>();
+
+  initial = true;
 
   timeChange() {
+    if ((this.secondsToTimer == 0 || this.secondsToTimer == null) && this.initial) {
+      this.secondsToTimer = 60;
+      this.initial = false;
+    }
     setTimeout(()=>{
-      if(this.time > 0){
-        this.time -= 1
+      if(this.secondsToTimer > 0){
+        this.secondsToTimer -= 1
+        this.newTimeEvent.emit(this.secondsToTimer)
         this.timeChange()
       } else {
         this.newItemEvent.emit(false);
