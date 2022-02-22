@@ -5,6 +5,8 @@
         *ngIf="gameStatus; else start"
         [gameStatus]="gameStatus" 
         (btnClick)="startGame()"
+        [time] = "time"
+        (seconds)="sendToTimer($event)"
     ></app-name>
     <ng-template #start>
         <div id="game">
