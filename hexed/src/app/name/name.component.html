@@ -16,6 +16,7 @@
     max="100" 
     placeholder="Enter Seconds" 
     autocomplete="off"
+    [(seconds)] = "input_time"
     #timer
     (keyup)="onTimer($event)"
 > 

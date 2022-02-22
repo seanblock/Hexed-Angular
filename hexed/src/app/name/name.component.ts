@@ -12,15 +12,19 @@ export class NameComponent implements OnInit {
   @Output() timer = new EventEmitter()
   @Output() initials = new EventEmitter()
   @Input() gameStatus:any
+
   time:any
   name:any
 
+  input_time :number;
 
   fever = new Audio('../assets/fever.mp3');
   
+  
+
   onClick() {
     this.initials.emit(this.name)
-    this.timer.emit(this.time)
+    this.timer.emit(this.input_time)
     this.btnClick.emit()
   }
 
@@ -33,8 +37,6 @@ export class NameComponent implements OnInit {
   }
 
   
-
-
   constructor() { 
  
   }

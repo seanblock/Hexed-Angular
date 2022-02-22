@@ -13,6 +13,11 @@ export class AppComponent {
 
   fever = new Audio('../assets/fever.mp3');
   win = new Audio('../assets/win.mp3');
+  secondsToTimer: number;
+
+  sendToTimer($event) {
+    this.secondsToTimer = $event;
+  }
   
   newGame() {
     this.win.currentTime = 0
