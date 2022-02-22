@@ -5,10 +5,11 @@
         *ngIf="gameStatus; else start"
         [gameStatus]="gameStatus" 
         (btnClick)="startGame()"
+        (timer)="sendToTimer($event)"
     ></app-name>
     <ng-template #start>
         <div id="game">
-            <app-timer (newTimeEvent)="timeUpdate($event)" ></app-timer>
+            <app-timer [end]="end" [gameStatus]="gameStatus" [secondsToTimer]="secondsToTimer" (newTimeEvent)="timeUpdate($event)" ></app-timer>
             <app-color [myColor]="myRgb" (newItemEvent)="randColor($event)"></app-color>
             <span *ngFor="let x of colors; let i = index;">
                 <app-slider [num]="i" [color]="x" (newItemEvent)="colorGet($event)"></app-slider>

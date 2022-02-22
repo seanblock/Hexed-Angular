@@ -12,24 +12,30 @@ export class NameComponent implements OnInit {
   @Output() timer = new EventEmitter()
   @Output() initials = new EventEmitter()
   @Input() gameStatus:any
-  time:any
-  name:any
-
+  @Input() time = '60';
+  name: string = '';
 
   fever = new Audio('../assets/fever.mp3');
   
   onClick() {
-    this.initials.emit(this.name)
-    this.timer.emit(this.time)
-    this.btnClick.emit()
+    if(this.name != '') {
+      this.initials.emit(this.name)
+      this.timer.emit(this.time)
+      this.btnClick.emit()
+    } else {
+      alert("Please enter a name");
+    }
+    
   }
 
-  onTimer(event: KeyboardEvent) { // with type info
-    this.time += (event.target as HTMLInputElement).value;
+  onTimer(value: string) { // with type info
+    if(parseInt(value) > 0) {
+      this.time = value;
+    }
   }
 
-  userName(event: KeyboardEvent) { // with type info
-    this.name += (event.target as HTMLInputElement).value;
+  userName(value: string) { // with type info
+    this.name = value;
   }
 
   

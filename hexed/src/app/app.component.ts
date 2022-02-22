@@ -20,6 +20,11 @@ export class AppComponent {
   fever = new Audio('../assets/fever.mp3');
   win = new Audio('../assets/win.mp3');
   
+  sendToTimer(data: any) {
+    this.secondsToTimer = parseInt(data);
+    console.log(this.secondsToTimer)
+  }
+
   newGame() {
     this.win.currentTime = 0
     this.win.pause()
