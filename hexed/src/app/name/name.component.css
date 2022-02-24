@@ -32,3 +32,9 @@ input {
     max-width: 500px;
     margin-bottom: 2rem;
 }
+
+#gameTitle {
+    margin-bottom: 2rem;
+    color: #F3EE05;
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
+}

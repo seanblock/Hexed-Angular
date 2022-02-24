@@ -8,14 +8,14 @@
 }
 
 h1 {
-    font-size: 3rem;
     border-bottom: 3px solid black;
     padding: 10px 0;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 ul{
     list-style-type: none;
-    font-size: 3rem;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
     position: absolute;
   }
   #highscore > ul{
