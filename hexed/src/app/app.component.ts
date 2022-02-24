@@ -46,6 +46,7 @@ export class AppComponent {
     this.end = true;
   }
 
+
   randColor(data: Array<number>) {
     for(const x of data) {
       this.randomColor.push(x);
@@ -61,6 +62,9 @@ export class AppComponent {
   timeUpdate(data: number) {
     if(!this.end) {
       this.timeLeft = data;
+      if(this.timeLeft == 0){
+        this.guess();  
+      }
     }
   }
 }
