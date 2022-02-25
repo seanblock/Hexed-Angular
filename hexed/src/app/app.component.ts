@@ -1,12 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
+import axios from 'axios' 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
 
+// export type ScoreItem = {
+//   initials: string,
+//   score: number
+// };
+
+export class AppComponent {
 
   @Input() colors = ['red', 'green', 'blue'];
   @Input() gameStatus = true
@@ -23,6 +29,10 @@ export class AppComponent {
   topTen: Array<{ initials: string, score: number }> = []
   fever = new Audio('../assets/fever.mp3');
   win = new Audio('../assets/win.mp3');
+
+  // type ScoreItem: {
+
+  // }
 
   
   sendToTimer(data: any) {
@@ -88,16 +98,66 @@ export class AppComponent {
   }
 
   topTenFunc() {
-    let temp = {initials: this.initials, score: this.score};
+    // let temp = {initials: this.initials, score: this.score};
 
-    this.topTen.push(temp);
-    this.topTen.sort(function(a, b) {
-      return b.score - a.score;
-    });
+    axios.get('/getscores')
+      .then( (response: any) => {
+        let tmp = response.data.scores
 
-    if(this.topTen.length > 10) {
-      this.topTen.pop();
-    }
+
+        Object.keys(tmp).forEach((key: string) : any => {
+          this.topTen.push({initials: key, score: tmp[key]}) 
+        });
+
+        // Sort scores
+        this.topTen.sort(function(a, b) {
+          return b.score - a.score;
+        });
+        console.log(this.topTen)
+        if(this.score > this.topTen[this.topTen.length - 1].score) {
+          console.log("re-sort")
+          axios.post('/sendscore', {
+            name: this.initials,
+            score: this.score
+          })
+          .then( (response: any) => {
+            console.log(response.data)
+          })
+          .catch(function (error: any) {
+            console.log("Send scores Error")
+            console.log(error);
+          })
+          .then( (response: any) => {
+            axios.get('/getscores')
+            .then( (response: any) => {
+              console.log(response.data)
+              this.topTen = [];
+              let tmp = response.data.scores
+              Object.keys(tmp).forEach((key: string) : any => {
+                this.topTen.push({
+                  initials: key, score: tmp[key]
+                }) 
+              })
+            })
+          })
+        }
+        
+      })
+      .catch(function (error: any) {
+        console.log("Get Scores Error")
+        console.log(error);
+      })
+
+      
+
+    // this.topTen.push(temp);
+    // this.topTen.sort(function(a, b) {
+    //   return b.score - a.score;
+    // });
+
+    // if(this.topTen.length > 10) {
+    //   this.topTen.pop();
+    // }
   }
 
 }
