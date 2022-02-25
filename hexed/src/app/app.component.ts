@@ -7,41 +7,35 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AppComponent {
 
+
   @Input() colors = ['red', 'green', 'blue'];
   @Input() gameStatus = true
-  @Input() settingStatus = false
-  secondsToTimer: number;
-  end: boolean;
-  randomColor: Array<number>;
-  myColor: Array<number>;
-  myRgb: string;
-  timeLeft: number;
-  title: string;
-
+  secondsToTimer: number = 0;
+  end = false;
+  randomColor: Array<number> = [];
+  myColor: Array<number> = [50, 50, 50];
+  myRgb = "";
+  timeLeft = 0;
+  title = 'hexed';
+  score = 0;
+  initials = ""
+  // topTen:A = [];
+  topTen: Array<{ initials: string, score: number }> = []
   fever = new Audio('../assets/fever.mp3');
   win = new Audio('../assets/win.mp3');
 
-  constructor() {
-    this.secondsToTimer = 0;
-    this.end = false;
-    this.randomColor = [];
-    this.myColor = [50, 50, 50];
-    this.myRgb = "";
-    this.timeLeft = 0;
-    this.title = 'hexed';
-  }
   
   sendToTimer(data: any) {
     this.secondsToTimer = parseInt(data);
     console.log(this.secondsToTimer)
   }
 
-  newGame() {
-    
-    this.startGame()
+  setInitials(data: string) {
+    this.initials = data;
   }
-
+  
   restart() {
+    this.end = false;
     this.gameStatus = true
   }
 
@@ -58,8 +52,9 @@ export class AppComponent {
     this.fever.currentTime = 0
     this.fever.pause()
     this.win.play()
-    // this.gameStatus = true
+    this.getScore()
     this.end = true;
+    this.restart()
   }
 
 
@@ -78,10 +73,32 @@ export class AppComponent {
   timeUpdate(data: number) {
     if(!this.end) {
       this.timeLeft = data;
-      if(this.timeLeft == 0){
-        this.guess();  
+      if(this.timeLeft === 0){
+        this.guess();
       }
     }
   }
+
+  getScore() {
+    console.log(this.timeLeft);
+    console.log("score")
+    this.score = (255 - Math.abs(this.randomColor[0] - this.myColor[0])) + (255 - Math.abs(this.randomColor[1] - this.myColor[1])) + (255 - Math.abs(this.randomColor[2] - this.myColor[2])) * Math.floor(this.timeLeft) * (1000 * (101 - this.secondsToTimer));
+    console.log(this.score);
+    this.topTenFunc();
+  }
+
+  topTenFunc() {
+    let temp = {initials: this.initials, score: this.score};
+
+    this.topTen.push(temp);
+    this.topTen.sort(function(a, b) {
+      return b.score - a.score;
+    });
+
+    if(this.topTen.length > 10) {
+      this.topTen.pop();
+    }
+  }
+
 }
 

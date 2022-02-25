@@ -6,6 +6,7 @@
         [gameStatus]="gameStatus" 
         (btnClick)="startGame()"
         (timer)="sendToTimer($event)"
+        (initials)="setInitials($event)"
     ></app-name>
     <ng-template #start>
         <div id="game">
@@ -29,21 +30,12 @@
             <img id="guess" src="../assets/block.png" alt="guess button" 
                 (click)="guess()"
             >
-            <button id="restart" alt="restartButton"
-            (click)="restart()">
-                Restart
-            </button>
-            <button id="newGame" alt="newGameButton" style="display: none;"
-                (click)="newGame()">
-                New Game
-            </button>
+
         </div>
     </ng-template>
     <app-score 
-        [remaining]="timeLeft" 
-        [myColor]="myColor" 
-        [target]="randomColor" 
-        [time]="secondsToTimer" 
-        [end]="end"
+        [score] = 'score'
+        [topTen]="topTen"
     ></app-score>
 </div>
+

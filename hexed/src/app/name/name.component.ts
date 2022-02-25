@@ -23,22 +23,20 @@ export class NameComponent implements OnInit {
       this.timer.emit(this.time)
       this.btnClick.emit()
     } else {
-      alert("Please enter a name");
+      alert("Please enter initals");
     }
     
   }
-
+  // parsing timing value from input to int
   onTimer(value: string) { // with type info
     if(parseInt(value) > 0) {
       this.time = value;
     }
   }
-
+  // obtaining user initials
   userName(value: string) { // with type info
     this.name = value;
   }
-
-  
 
 
   constructor() { 

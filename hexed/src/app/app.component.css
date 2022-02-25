@@ -56,3 +56,21 @@ app-color {
 #game img {
     width: 100px;
 }
+
+#restart {
+    padding: .25rem 1rem;
+    border-radius: 100vw;
+    border: none;
+    background: linear-gradient(to right, rgb(255, 238, 0), #F3EE05);
+    font-size: clamp(1rem, 2.5vw, 2.5rem); 
+    color: black;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all ease .25s;
+    margin-top: 2rem;
+    color: rgba(250, 45, 45, 0.945);
+}
+
+#restart:hover {
+    transform: scale(1.1);
+}
