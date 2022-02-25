@@ -1,12 +1,15 @@
 <div id="score-box">
   <div id="score">
-    <h1>{{'Your score: ' + score}}</h1>
+    <h3>{{'Your latest score: ' + score}}</h3>
   </div>
 
   <div id="highscore">
     <h1>Top 10</h1>
-    <ul *ngFor="let x of topTen; let i = index;">
-     <li>{{i+1 + ') ' + x}}</li>
+    <ul>
+      
+      <li *ngFor="let x of topTen; let i = index;">
+        {{i+1 + ') ' + x.initials + '\t' + x.score}}
+      </li>
     </ul>
   </div>
 </div>

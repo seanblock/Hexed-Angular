@@ -2,22 +2,28 @@
     border: 2px solid black;
     border-radius: 10px;
     height: 100%;
-    background-color: rgba(255, 0, 0, 0.545);
+    background-color: rgba(255, 0, 0, 0.8);
     z-index: 2;
     margin: 0 4rem;
 }
 
 h1 {
-    font-size: 3rem;
     border-bottom: 3px solid black;
     padding: 10px 0;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 ul{
     list-style-type: none;
-    font-size: 3rem;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
     position: absolute;
   }
-  #highscore > ul{
-      align-content: left;
-    }
+
+  li {
+      width: 100%;
+      text-align: left !important;
+
+  }
+  /* #highscore > ul{
+      align-content: none;
+    } */

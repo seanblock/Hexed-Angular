@@ -6,16 +6,36 @@
         [gameStatus]="gameStatus" 
         (btnClick)="startGame()"
         (timer)="sendToTimer($event)"
+        (initials)="setInitials($event)"
     ></app-name>
     <ng-template #start>
         <div id="game">
-            <app-timer [end]="end" [gameStatus]="gameStatus" [secondsToTimer]="secondsToTimer" (newTimeEvent)="timeUpdate($event)" ></app-timer>
-            <app-color [myColor]="myRgb" (newItemEvent)="randColor($event)"></app-color>
+            <app-timer
+                [end]="end" 
+                [gameStatus]="gameStatus" 
+                [secondsToTimer]="secondsToTimer" 
+                (newTimeEvent)="timeUpdate($event)" 
+            ></app-timer>
+            <app-color
+                [myColor]="myRgb" 
+                (newItemEvent)="randColor($event)"
+            ></app-color>
             <span *ngFor="let x of colors; let i = index;">
-                <app-slider [num]="i" [color]="x" (newItemEvent)="colorGet($event)"></app-slider>
+                <app-slider 
+                    [num]="i" 
+                    [color]="x" 
+                    (newItemEvent)="colorGet($event)"
+                ></app-slider>
             </span>
-            <img id="guess" src="../assets/block.png" alt="guess button" (click)="guess()">
+            <img id="guess" src="../assets/block.png" alt="guess button" 
+                (click)="guess()"
+            >
+
         </div>
     </ng-template>
-    <app-score [remaining]="timeLeft" [myColor]="myColor" [target]="randomColor" [time]="secondsToTimer" [end]="end"></app-score>
+    <app-score 
+        [score] = 'score'
+        [topTen]="topTen"
+    ></app-score>
 </div>
+
