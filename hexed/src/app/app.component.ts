@@ -103,7 +103,7 @@ export class AppComponent {
     axios.get('/getscores')
       .then( (response: any) => {
         let tmp = response.data.scores
-
+        this.topTen = [];
 
         Object.keys(tmp).forEach((key: string) : any => {
           this.topTen.push({initials: key, score: tmp[key]}) 
